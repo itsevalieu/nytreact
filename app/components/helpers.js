@@ -14,13 +14,24 @@ var helper = {
 
     // Figure out the geolocation
     var queryURL = "http://api.nytimes.com/svc/search/v2/articlesearch.json?q=" + topic + "&page=1&begin_date=" + beginDate + "&end_date=" + endDate + "&sort=newest&api-key=" + nytAPI;
-    return axios.get(queryURL).then(function(response) {
+    return axios.get(queryURL).then(function(results) {
       // If get get a result, return that result's formatted address property
-      // if (response.data.results[0]) {
-        return response;
-      // }
-      // // If we don't get any results, return an empty string
-      // return "";
+      	var queryResults = results.data.response.docs;
+      	console.log(queryResults);
+
+      	var articles = [];
+      
+      	for(var i = 0; i < queryResults.length; i++) {
+      		var object = {
+      			title: queryResults[i].headline.main,
+      			url: queryResults[i].web_url
+      		};
+      		articles.push(object);
+      	}
+
+      	console.log(articles);
+
+        return articles;
     });
   },
 

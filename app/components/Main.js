@@ -1,10 +1,26 @@
 // Include React
 var React = require("react");
 
+// Helper for making AJAX requests to our API
+var helpers = require("./helpers");
+
+helpers.runQuery("labor", 20120101, 20170101);
+// getInitialState: function() {
+// 		return {};
+// 	},
+
+// 	componentDidMount: function() {
+// 		helpers.getArticle().then(function(response) {
+// 			console.log("Mount, getArticle: \n" + response);
+		
+		
+// 		});
+// 	},
+
 var Main = React.createClass({
 
-  // Here we render the function
-  render: function() {
+	// Here we render the function
+	render: function() {
 
     return (
     	<div>
