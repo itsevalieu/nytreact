@@ -4,22 +4,42 @@ var React = require("react");
 // Helper for making AJAX requests to our API
 var helpers = require("./helpers");
 
-helpers.runQuery("labor", 20120101, 20170101);
-// getInitialState: function() {
-// 		return {};
+// helpers.runQuery("labor", 20120101, 20170101);
+// 	componentDidUpdate: function() {
+// 		helpers.runQuery(this.state.searchTopic, this.state.searchBeginDate, this.state.searchEndDate).then(function(response) {
+// 			console.log("Updated!");
+// 			helpers.postArticle(this.state.)
+// 		}
 // 	},
+// 	// Here we render the function
 
-// 	componentDidMount: function() {
-// 		helpers.getArticle().then(function(response) {
-// 			console.log("Mount, getArticle: \n" + response);
-		
-		
-// 		});
-// 	},
 
 var Main = React.createClass({
+	getInitialState: function() {
+		return { 
+			searchTopic: "",
+			searchBeginDate: "",
+			searchEndDate: "",
+			results: [],
+			articles: []
+		};
+	},
 
-	// Here we render the function
+	//needs testing:
+	componentDidMount: function() {
+		helpers.getArticle().then(function(response) {
+			console.log("Mount, getArticle: \n" + response);
+			if (response !== this.state.articles) {
+				console.log("Article", response);
+				this.setState({ articles: response });
+			}
+		}.bind(this));
+	},
+
+	setTerms: function(term, bDate, eDate) {
+		this.setState({ searchTopic: term, searchBeginDate: bDate, searchEndDate: eDate});
+	},
+
 	render: function() {
 
     return (
