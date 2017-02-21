@@ -7,7 +7,7 @@ var SavedArticles = React.createClass({
     return (
     	<div className="row">
 			<div className="col s12 m12">
-				<div className="card-panel">
+				<div className="card-panel teal lighten-3">
 					<ul className="collection with-header">
 						<li className="collection-header"><h4>Saved Articles</h4></li>
 						<li className="collection-item">

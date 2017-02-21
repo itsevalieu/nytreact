@@ -44,19 +44,17 @@ var Main = React.createClass({
 
     return (
     	<div>
-			<div className="jumbotron">
-				<div className="container">
-					<h2><strong>New York Times Article Scrubber</strong></h2>
-					<p><em>Search for and annotate articles of interest!</em></p>
-					
-					<hr />
-					
-					<p>
-						<a href="#/Search" className="btn btn-primary btn-lg">Show Search</a>
-						<a href="#/Results" className="btn btn-primary btn-lg">Show Results</a>
-						<a href="#/SavedArticles" className="btn btn-primary btn-lg">Show Saved Articles</a>
-					</p>
-				</div>
+			<div className="container">
+				<h2 className="center"><strong>New York Times Article Scrubber</strong></h2>
+				<p className="center"><em>Search for and annotate articles of interest!</em></p>
+				
+				<hr />
+				
+				<p>
+					<a href="#/Search" className="btn btn-primary btn-lg">Show Search</a>
+					<a href="#/Results" className="btn btn-primary btn-lg">Show Results</a>
+					<a href="#/SavedArticles" className="btn btn-primary btn-lg">Show Saved Articles</a>
+				</p>
 			</div>
 	      	<div className="container">
 

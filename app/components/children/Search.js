@@ -7,7 +7,7 @@ var Search = React.createClass({
     return (
     	<div className="row">
 			<div className="col s12 m12">
-				<div className="card-panel">
+				<div className="card-panel teal lighten-3">
 					<ul className="collection with-header">
 						<li className="collection-header"><h4>Search</h4></li>
 
@@ -25,7 +25,11 @@ var Search = React.createClass({
 									<input id="end-year"></input>
 									<label for="end-year">End Year</label>
 								</div>
-								<button className="btn waves-effect waves-light" type="submit" name="action">Submit</button>
+								<div className="row">
+									<div className="col s12 m12">
+										<button className="right btn waves-effect waves-light" type="submit" name="action">Submit</button>
+									</div>
+								</div>
 							</form>
 						</li>
 
