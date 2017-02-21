@@ -10,8 +10,7 @@ var ArticleSchema = new Schema({
 		required: false
 	},
 	date: {
-	    type: Date,
-	    default: Date.now
+	    type: Date
 	}
 });
 
