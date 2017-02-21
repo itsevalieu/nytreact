@@ -19,10 +19,10 @@ var hashHistory = router.hashHistory;
 var IndexRoute = router.IndexRoute;
 
 // Reference the high-level components
-var Main = require("../components/Main");
-var Search = require("../components/Search");
-var Results = require("../components/Results");
-var SavedArticles = require("../components/SavedArticles");
+var Main = require("../components/Main.js");
+var Search = require("../components/children/Search");
+var Results = require("../components/children/Results");
+var SavedArticles = require("../components/children/SavedArticles");
 
 
 // Export the Routes
@@ -37,6 +37,8 @@ module.exports = (
       <Route path="Results" component={Results} />
       <Route path="SavedArticles" component={SavedArticles} />
 
+      {/* Default to this option:*/}
+      <IndexRoute component={Search} />
     </Route>
   </Router>
 
