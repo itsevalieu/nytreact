@@ -58,7 +58,7 @@ var Main = React.createClass({
 					</p>
 				</div>
 			</div>
-	      	<div className="row">
+	      	<div className="container">
 
 				{/* This code will dump the correct Child Component */}
 				{this.props.children}

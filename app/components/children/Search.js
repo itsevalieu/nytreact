@@ -5,23 +5,31 @@ var Search = React.createClass({
   // Here we render the component
   render: function() {
     return (
-    	<div className="container">
-			<div className="col-lg-12">
-				<div className="panel panel-default">
-					<div className="panel-heading">
-						<h3 className="panel-title">Search</h3>
-					</div>
-					<div className="panel-body">
-						<form>
-							<label>Topic</label><br/>
-							<input></input><br/>
-							<label>Start Year</label><br/>
-							<input></input><br/>
-							<label>End Year</label><br/>
-							<input></input><br/>
-							<button className="btn btn-primary btn-lg">Submit</button>
-						</form>
-					</div>
+    	<div className="row">
+			<div className="col s12 m12">
+				<div className="card-panel">
+					<ul className="collection with-header">
+						<li className="collection-header"><h4>Search</h4></li>
+
+						<li className="collection-item">
+							<form>
+								<div className="input-field col s12 m12">
+									<input id="topic"></input>
+									<label for="topic">Topic</label>
+								</div>
+								<div className="input-field col s6 m6">
+									<input id="start-year"></input>
+									<label for="start-year">Start Year</label>
+								</div>
+								<div className="input-field col s6 m6">
+									<input id="end-year"></input>
+									<label for="end-year">End Year</label>
+								</div>
+								<button className="btn waves-effect waves-light" type="submit" name="action">Submit</button>
+							</form>
+						</li>
+
+					</ul>
 				</div>
 			</div>
 		</div>

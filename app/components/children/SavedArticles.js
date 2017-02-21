@@ -5,34 +5,83 @@ var SavedArticles = React.createClass({
   // Here we render the component
   render: function() {
     return (
-    	<div className="container">
-			<div className="col-lg-12">
-				<div className="panel panel-default">
-					<div className="panel-heading">
-						<h3 className="panel-title">Saved Articles</h3>
-					</div>
-					<div className="panel-body">
-						
-						<div className="panel panel-default">
-							<div className="panel-heading">
-								<div className="row">
-									<div className="col-lg-4">
-										<h4 className="panel-title">Title</h4>
-									</div>
-									<div className="col-lg-4">
-										<h4 className="panel-title">Date Saved:</h4>
-									</div>
-									<div className="col-lg-4">
-										<button className="btn btn-lg btn-primary">Remove</button>
-									</div>
-								</div>
+    	<div className="row">
+			<div className="col s12 m12">
+				<div className="card-panel">
+					<ul className="collection with-header">
+						<li className="collection-header"><h4>Saved Articles</h4></li>
+						<li className="collection-item">
+							<div className="card-panel row">
+								
+								<span className="col s5 m5">Title</span>
+								<span className="col s5 m5">Date</span>
+								<span className="col s2 m2">
+									<a href="#!" className="secondary-content right">
+										<i className="material-icons">delete</i>
+									</a>
+								</span>
+								<br/><hr/>
+								<span className="col s12 m12">Notes</span>
+								
 							</div>
-							<div className="panel-body">
-								<p>Notes:</p>
-							</div>
-						</div>
 
-					</div>
+							<div className="card-panel row">
+								
+								<span className="col s5 m5">Title</span>
+								<span className="col s5 m5">Date</span>
+								<span className="col s2 m2">
+									<a href="#!" className="secondary-content right">
+										<i className="material-icons">delete</i>
+									</a>
+								</span>
+								<br/><hr/>
+								<span className="col s12 m12">Notes</span>
+								
+							</div>
+
+							<div className="card-panel row">
+								
+								<span className="col s5 m5">Title</span>
+								<span className="col s5 m5">Date</span>
+								<span className="col s2 m2">
+									<a href="#!" className="secondary-content right">
+										<i className="material-icons">delete</i>
+									</a>
+								</span>
+								<br/><hr/>
+								<span className="col s12 m12">Notes</span>
+								
+							</div>
+
+							<div className="card-panel row">
+								
+								<span className="col s5 m5">Title</span>
+								<span className="col s5 m5">Date</span>
+								<span className="col s2 m2">
+									<a href="#!" className="secondary-content right">
+										<i className="material-icons">delete</i>
+									</a>
+								</span>
+								<br/><hr/>
+								<span className="col s12 m12">Notes</span>
+								
+							</div>
+
+							<div className="card-panel row">
+								
+								<span className="col s5 m5">Title</span>
+								<span className="col s5 m5">Date</span>
+								<span className="col s2 m2">
+									<a href="#!" className="secondary-content right">
+										<i className="material-icons">delete</i>
+									</a>
+								</span>
+								<br/><hr/>
+								<span className="col s12 m12">Notes</span>
+								
+							</div>
+						</li>
+					</ul>
 				</div>
 			</div>
 		</div>
