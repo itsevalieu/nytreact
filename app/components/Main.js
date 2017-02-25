@@ -1,5 +1,9 @@
 // Include React
 var React = require("react");
+var Search = require("./children/Search");
+var Results = require("./children/Results");
+var SavedArticles = require("./children/SavedArticles");
+
 
 // Helper for making AJAX requests to our API
 var helpers = require("./helpers");
@@ -14,30 +18,40 @@ var helpers = require("./helpers");
 // 	// Here we render the function
 
 
+	//needs testing:
+	// componentDidMount: function() {
+	// 	helpers.getArticle().then(function(response) {
+	// 		console.log("Mount, getArticle: \n" + response);
+	// 		if (response !== this.state.articles) {
+	// 			console.log("Article", response);
+	// 			this.setState({ articles: response });
+	// 		}
+	// 	}.bind(this));
+	// },
+
 var Main = React.createClass({
 	getInitialState: function() {
 		return { 
 			searchTopic: "",
 			searchBeginDate: "",
 			searchEndDate: "",
-			results: [],
-			articles: []
+			results: []
 		};
 	},
 
-	//needs testing:
-	componentDidMount: function() {
-		helpers.getArticle().then(function(response) {
-			console.log("Mount, getArticle: \n" + response);
-			if (response !== this.state.articles) {
-				console.log("Article", response);
-				this.setState({ articles: response });
-			}
+	componentDidUpdate: function() {
+		console.log("begin component update");
+		helpers.runQuery(this.state.searchTopic, this.state.searchBeginDate, this.state.searchEndDate).then(function(response) {
+			console.log("Results are in!", response);
+			this.setState({results: response});
 		}.bind(this));
 	},
-
-	setTerms: function(term, bDate, eDate) {
-		this.setState({ searchTopic: term, searchBeginDate: bDate, searchEndDate: eDate});
+	setTerms: function(term, startYear, endYear) {
+		this.setState({ 
+			searchTopic: term, 
+			searchBeginDate: startYear, 
+			searchEndDate: endYear
+		});
 	},
 
 	render: function() {
@@ -59,8 +73,8 @@ var Main = React.createClass({
 	      	<div className="container">
 
 				{/* This code will dump the correct Child Component */}
-				{this.props.children}
-
+				<Search setTerms={this.setTerms}/>
+				<Results/>
 			</div>
 		</div>
     );

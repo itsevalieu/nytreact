@@ -33,12 +33,10 @@ module.exports = (
     <Route path="/" component={Main}>
 
       {/* If user selects Search, Results, or SavedArticles show the appropriate component */}
-      <Route path="Search" component={Search} />
-      <Route path="Results" component={Results} />
+
       <Route path="SavedArticles" component={SavedArticles} />
 
       {/* Default to this option:*/}
-      <IndexRoute component={Search} />
     </Route>
   </Router>
 
