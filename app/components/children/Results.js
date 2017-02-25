@@ -3,11 +3,11 @@ var ResultItems = require("./ResultItems");
 
 var Results = React.createClass({
 
-	getInitialState: function() {
-		return { 
-			results: this.props.results
-		};
-	},
+	// getInitialState: function() {
+	// 	return { 
+	// 		results: this.props.results
+	// 	};
+	// },
 
 	render: function() {
 	    return (
@@ -16,7 +16,7 @@ var Results = React.createClass({
 					<div className="card-panel teal lighten-3">
 						<ul className="collection with-header">	
 							<li className="collection-header"><h4>Results</h4></li>
-							{this.state.results.map((item, index) => {
+							{this.props.results.map((item, index) => {
 								return <ResultItems
 									key={index}
 									title={item.title}

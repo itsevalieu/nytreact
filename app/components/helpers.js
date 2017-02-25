@@ -10,7 +10,7 @@ var helper = {
   // This function serves our purpose of running the query to geolocate.
   runQuery: function(topic, beginDate, endDate) {
 
-    console.log("helper get", topic, beginDate, endDate);
+    console.log("Helper: get", topic, beginDate, endDate);
 
     // Figure out the geolocation
     var queryURL = "http://api.nytimes.com/svc/search/v2/articlesearch.json?q=" + topic + "&page=1&begin_date=" + beginDate + "0101&end_date=" + endDate + "0101&sort=newest&api-key=" + nytAPI;

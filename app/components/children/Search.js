@@ -27,7 +27,7 @@ var Search = React.createClass({
 		event.preventDefault();
 		this.props.setTerms(this.state.term, this.state.startYear, this.state.endYear);
 
-		console.log("handling submit", this.state.term, this.state.startYear, this.state.endYear);
+		console.log("Search: handling form submit", this.state.term, this.state.startYear, this.state.endYear);
 
 		this.setState({
 			term: "",

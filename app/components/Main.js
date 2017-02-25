@@ -20,36 +20,41 @@ var Main = React.createClass({
 
 	componentDidMount: function() {
 	
-	    helpers.getArticle().then(function(response) {
-	      console.log(response);
-	      if (response !== this.state.articles) {
-	        console.log("Article", response.data);
-	        this.setState({articles: response.data});
-	      }
-	    }.bind(this));
+	    // helpers.getArticle().then(function(response) {
+	    //   console.log("Main:", response);
+	    //   // if (response !== this.state.articles) {
+	    //   //   console.log("Main: Article", response.data);
+	    //   //   this.setState({articles: response.data});
+	    //   // }
+	    // }.bind(this));
 	},
 
-	componentDidUpdate: function() {
-		console.log("begin component update");
-		helpers.runQuery(this.state.searchTopic, this.state.searchBeginDate, this.state.searchEndDate).then(function(response) {
-			console.log("Results are in!", response);
-			console.log(response[0].title, response[0].url);
+	componentDidUpdate: function(prevProps, prevState) {
+		
+		if(prevState.searchTopic !== this.state.searchTopic || this.state.searchTopic !== ''){
+			console.log("Main: begin component update");
+			helpers.runQuery(this.state.searchTopic, this.state.searchBeginDate, this.state.searchEndDate).then(function(response) {
+				console.log("Main: Results are in!", response);
+				console.log("Main", response[0].title, response[0].url);
 
-			this.setState({results: response});
-			console.log("Results", this.state.results[0].title);
+				//if(this.state.results !== results){
 
-			helpers.postArticle(this.state.results[0].title, this.state.results[0].url).then(function() {
-				console.log("Saved Article!");
+				this.setState({results: response});
+				console.log("Main: Results", this.state.results[0].title);
 
-				helpers.getArticle().then(function(response) {
-					console.log("Get article", response.data);
-					this.setState({articles: response.data});
-				
+				helpers.postArticle(this.state.results[0].title, this.state.results[0].url).then(function() {
+					console.log("Main: Saved Article!");
+
+					helpers.getArticle().then(function(response) {
+						console.log("Main: Get article", response.data);
+						this.setState({articles: response.data});
+					
+					}.bind(this));
+
 				}.bind(this));
 
 			}.bind(this));
-
-		}.bind(this));
+		}
 	},
 
 	setTerms: function(term, startYear, endYear) {
