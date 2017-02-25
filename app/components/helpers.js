@@ -33,6 +33,7 @@ var helper = {
 
         return articles;
     });
+
   },
 
   // This function hits our own server to retrieve the record of query results

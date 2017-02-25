@@ -2,12 +2,13 @@ var React = require("react");
 var ResultItems = require("./ResultItems");
 
 var Results = React.createClass({
+
 	getInitialState: function() {
 		return { 
 			results: this.props.results
 		};
 	},
-	// Here we render the component
+
 	render: function() {
 	    return (
 	    	<div className="row">
