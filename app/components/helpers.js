@@ -17,7 +17,7 @@ var helper = {
     return axios.get(queryURL).then(function(results) {
       // If get get a result, return that result's formatted address property
       	var queryResults = results.data.response.docs;
-      	console.log(queryResults);
+      	// console.log(queryResults);
 
       	var articles = [];
       
@@ -29,7 +29,7 @@ var helper = {
       		articles.push(object);
       	}
 
-      	console.log(articles);
+      	// console.log(articles);
 
         return articles;
     });

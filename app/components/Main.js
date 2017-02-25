@@ -8,16 +8,6 @@ var SavedArticles = require("./children/SavedArticles");
 // Helper for making AJAX requests to our API
 var helpers = require("./helpers");
 
-// helpers.runQuery("labor", 20120101, 20170101);
-// 	componentDidUpdate: function() {
-// 		helpers.runQuery(this.state.searchTopic, this.state.searchBeginDate, this.state.searchEndDate).then(function(response) {
-// 			console.log("Updated!");
-// 			helpers.postArticle(this.state.)
-// 		}
-// 	},
-// 	// Here we render the function
-
-
 	//needs testing:
 	// componentDidMount: function() {
 	// 	helpers.getArticle().then(function(response) {
@@ -27,7 +17,17 @@ var helpers = require("./helpers");
 	// 			this.setState({ articles: response });
 	// 		}
 	// 	}.bind(this));
-	// },
+	// // },
+	// helpers.postArticle(this.state.).then(function() {
+	// 			console.log("Updated!");
+
+	// 			helpers.getArticle().then(function(response) {
+	// 				console.log("Get article", response.data);
+	// 				this.setState({});
+
+	// 			}.bind(this));
+	// 		}.bind(this));
+
 
 var Main = React.createClass({
 	getInitialState: function() {
@@ -35,7 +35,8 @@ var Main = React.createClass({
 			searchTopic: "",
 			searchBeginDate: "",
 			searchEndDate: "",
-			results: []
+			results: [],
+			articles: []
 		};
 	},
 
@@ -43,9 +44,12 @@ var Main = React.createClass({
 		console.log("begin component update");
 		helpers.runQuery(this.state.searchTopic, this.state.searchBeginDate, this.state.searchEndDate).then(function(response) {
 			console.log("Results are in!", response);
+			console.log(response[0].title, response[0].url);
 			this.setState({results: response});
+			console.log("Results", this.state.results[0].title);
 		}.bind(this));
 	},
+
 	setTerms: function(term, startYear, endYear) {
 		this.setState({ 
 			searchTopic: term, 
@@ -55,7 +59,6 @@ var Main = React.createClass({
 	},
 
 	render: function() {
-
     return (
     	<div>
 			<div className="container">
@@ -74,7 +77,12 @@ var Main = React.createClass({
 
 				{/* This code will dump the correct Child Component */}
 				<Search setTerms={this.setTerms}/>
-				<Results/>
+				<Results 
+					results={this.state.results}
+				/>
+				<SavedArticles 
+					articles={this.state.articles}
+				/>
 			</div>
 		</div>
     );
