@@ -16,6 +16,7 @@ class ArticleItems extends Component {
 		</div>
     );
   }
+  
 }
 
 export default ArticleItems;

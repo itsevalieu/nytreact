@@ -34,9 +34,7 @@ class Search extends Component {
 
 	handleSubmit(event) {
 		event.preventDefault();
-
 		console.log("Search: handling form submit", this.state.term, this.state.startYear, this.state.endYear);
-		
 		helpers.runQuery(this.state.term, this.state.startYear, this.state.endYear).then((response) => {
 			console.log("Search: Results are in!", response);
 			this.setState({
@@ -105,7 +103,7 @@ class Search extends Component {
 			</div>
 	    );
 	}
-	
+
 }
 
 export default Search;

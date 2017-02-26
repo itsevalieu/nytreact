@@ -1,15 +1,30 @@
 import React, {Component} from "react";
 import ArticleItems from "./ArticleItems";
+import helpers from "../helpers";
 
 class Articles extends Component {
 	
 	constructor(props) {
 		super(props);
+		this.getSavedArticles = this.getSavedArticles.bind(this);
 		this.state = {
 			articles: []
 		}
 	}
-  	
+
+  	componentDidMount() {
+  		console.log("Is Mounting");
+  		console.log("Previous State Articles: ", this.state.articles);
+  		this.getSavedArticles();
+  	}
+  	//Function: retrieves saved articles from server
+  	getSavedArticles() {
+  		helpers.getArticle().then((response) => {
+  			console.log("Listing Articles", response.data);
+			this.setState({ articles: response.data });
+		});
+  	}
+  	//Render Article Component and child ArticleItem components
   	render() {
 	    return (
 	    	<div className="row">
