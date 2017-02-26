@@ -14,40 +14,38 @@ var Main = React.createClass({
 			searchBeginDate: "",
 			searchEndDate: "",
 			results: [],
+			saved: [],
 			articles: []
 		};
 	},
 
-	componentDidMount: function() {
+	componentDidMount: function(prevProps, prevState) {
 	
-	    // helpers.getArticle().then(function(response) {
-	    //   console.log("Main:", response);
-	    //   // if (response !== this.state.articles) {
-	    //   //   console.log("Main: Article", response.data);
-	    //   //   this.setState({articles: response.data});
-	    //   // }
-	    // }.bind(this));
+	    helpers.getArticle().then(function(response) {
+	    	console.log("Main:", response);
+
+			if (prevState.articles !== this.state.articles) {
+				console.log("Main: Article", response);
+				this.setState({articles: response});
+			}
+	    }.bind(this));
 	},
 
 	componentDidUpdate: function(prevProps, prevState) {
 		
-		if(prevState.searchTopic !== this.state.searchTopic || this.state.searchTopic !== ''){
+		if(prevState.searchTopic !== this.state.searchTopic){
+
 			console.log("Main: begin component update");
 			helpers.runQuery(this.state.searchTopic, this.state.searchBeginDate, this.state.searchEndDate).then(function(response) {
 				console.log("Main: Results are in!", response);
-				console.log("Main", response[0].title, response[0].url);
+				// console.log("Main", response[0].title, response[0].url);
 
-				//if(this.state.results !== results){
-
-				this.setState({results: response});
-				console.log("Main: Results", this.state.results[0].title);
-
-				helpers.postArticle(this.state.results[0].title, this.state.results[0].url).then(function() {
+				helpers.postArticle(response[0].title, response[0].url).then(function() {
 					console.log("Main: Saved Article!");
 
-					helpers.getArticle().then(function(response) {
-						console.log("Main: Get article", response.data);
-						this.setState({articles: response.data});
+					helpers.getArticle().then(function(newResponse) {
+						console.log("Main: Get article", newResponse.data);
+						this.setState({results: response, articles: newResponse.data});
 					
 					}.bind(this));
 
@@ -87,6 +85,7 @@ var Main = React.createClass({
 
 				<Results 
 					results={this.state.results}
+					postArticle
 				/>
 
 				<SavedArticles 

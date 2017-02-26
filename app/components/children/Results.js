@@ -3,12 +3,6 @@ var ResultItems = require("./ResultItems");
 
 var Results = React.createClass({
 
-	// getInitialState: function() {
-	// 	return { 
-	// 		results: this.props.results
-	// 	};
-	// },
-
 	render: function() {
 	    return (
 	    	<div className="row">
@@ -22,17 +16,7 @@ var Results = React.createClass({
 									title={item.title}
 									url={item.url}
 								/>;
-							})}
-
-							{/*Example item below*/}
-							<li className="collection-item">
-								<div>
-									<span>Title</span>
-									<a href="#!" className="secondary-content">
-										<i className="material-icons">star</i>
-									</a>
-								</div>
-							</li>												
+							})}							
 						</ul>
 					</div>
 				</div>

@@ -49,7 +49,7 @@ app.get("/api/saved", function(req, res) {
   // We will find all the records, sort it in descending order, then limit the records to 5
   Article.find({}).sort([
     ["date", "descending"]
-  ]).limit(5).exec(function(err, doc) {
+  ]).limit(10).exec(function(err, doc) {
     if (err) {
       console.log(err);
     }

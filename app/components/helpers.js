@@ -43,7 +43,10 @@ var helper = {
 
   // This function posts new searches to our database.
   postArticle: function(title, url) {
-    return axios.post("/api/saved", { title: title, url: url });
+    return axios.post("/api/saved", { 
+      title: title, 
+      url: url 
+    });
   }
 };
 

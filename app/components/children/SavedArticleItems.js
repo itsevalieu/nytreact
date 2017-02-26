@@ -5,15 +5,14 @@ var SavedArticleItems = React.createClass({
   render: function() {
     return (
 		<div className="card-panel row">
-			<span className="col s5 m5">Title</span>
-			<span className="col s5 m5">Date</span>
+			<span className="col s10 m10">{this.props.title}</span>
 			<span className="col s2 m2">
-				<a href="#!" className="secondary-content right">
+				<a href={this.props.url} className="secondary-content right">
 					<i className="material-icons">delete</i>
 				</a>
 			</span>
 			<br/><hr/>
-			<span className="col s12 m12">Notes</span>
+			<span className="col s12 m12">{this.props.date}</span>
 		</div>
     );
   }
