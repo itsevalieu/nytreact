@@ -1,9 +1,9 @@
-var React = require("react");
-var ResultItems = require("./ResultItems");
+import React, {Component} from "react";
+import ResultItems from "./ResultItems";
 
-var Results = React.createClass({
+class Results extends Component {
 
-	render: function() {
+	render() {
 	    return (
 	    	<div className="row">
 				<div className="col s12 m12">
@@ -23,7 +23,6 @@ var Results = React.createClass({
 			</div>
 	    );
 	}
+}
 
-});
-
-module.exports = Results;
+export default Results;

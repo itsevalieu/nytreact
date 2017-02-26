@@ -1,14 +1,18 @@
-var React = require("react");
+import React, {Component} from "react";
 
-var Search = React.createClass({
-	getInitialState: function() {
-		return {
+class Search extends Component {
+
+	constructor(props) {
+		super(props);
+		this.handleChange = this.handleChange.bind(this);
+		this.handleSubmit = this.handleSubmit.bind(this);
+		this.state = { 
 			term: "",
 			startYear: "",
 			endYear: ""
-		};
-	},
-	handleChange: function(event) {
+		}
+	}
+	handleChange(event) {
 		if(event.target.id === "term") {
 			this.setState({
 				term: event.target.value,
@@ -22,8 +26,8 @@ var Search = React.createClass({
 				endYear: event.target.value
 			});
 		}
-	},
-	handleSubmit: function(event) {
+	}
+	handleSubmit(event) {
 		event.preventDefault();
 		this.props.setTerms(this.state.term, this.state.startYear, this.state.endYear);
 
@@ -35,9 +39,8 @@ var Search = React.createClass({
 			endYear: ""
 		});
 
-	},
-  // Here we render the component
-	render: function() {
+	}
+	render() {
 	    return (
 	    	<div className="row">
 				<div className="col s12 m12">
@@ -92,7 +95,6 @@ var Search = React.createClass({
 	    );
   
 	}
+}
 
-});
-
-module.exports = Search;
+export default Search;

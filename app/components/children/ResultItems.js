@@ -1,21 +1,23 @@
-var React = require("react");
+import React, {Component} from "react";
 
 
-var ResultItems = React.createClass({
-	getInitialState: function() {
-		return {
+class ResultItems extends Component {
+	constructor(props) {
+		super(props);
+		this.state = { 
 			saved: false,
 			starId: "grey"||"blue"
-		};
-	},
-	saveItem: function() {
+		}
+	}
+	
+	saveItem() {
 		console.log("Item saved?:", this.state.saved);
 		this.setState({
 			saved: !this.state.saved,
 			starId: !this.state.starId
 		});
-	},
-	render: function() {
+	}
+	render() {
 	    return (
 			<li className="collection-item" >
 				<div>
@@ -32,7 +34,6 @@ var ResultItems = React.createClass({
 			</li>
 	    );
 	}
+}
 
-});
-
-module.exports = ResultItems;
+export default ResultItems;

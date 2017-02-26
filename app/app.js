@@ -1,9 +1,11 @@
-// Include the Main React Dependencies
-var React = require("react");
-var ReactDOM = require("react-dom");
+import React from "react";
+import ReactDOM from "react-dom";
+import { Router, browserHistory } from "react-router";
+import routes from "./config/routes";
 
-// Grabs the Routes
-var routes = require("./config/routes");
+const appEntry = <Router history={browserHistory}>{routes()}</Router>;
 
-// Renders the contents according to the route page.
-ReactDOM.render(routes, document.getElementById("app"));
+ReactDOM.render(
+	appEntry,
+	document.getElementById("app")
+);

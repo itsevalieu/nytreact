@@ -1,9 +1,9 @@
-var React = require("react");
-var SavedArticleItems = require("./SavedArticleItems");
+import React, {Component} from "react";
+import SavedArticleItems from "./SavedArticleItems";
 
-var SavedArticles = React.createClass({
+class SavedArticles extends Component {
 
-  	render: function() {
+  	render() {
 	    return (
 	    	<div className="row">
 				<div className="col s12 m12">
@@ -27,9 +27,7 @@ var SavedArticles = React.createClass({
 				</div>
 			</div>
 	    );
-  
 	}
+}
 
-});
-
-module.exports = SavedArticles;
+export default SavedArticles;

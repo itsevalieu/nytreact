@@ -1,43 +1,16 @@
-// Include the React library
-var React = require("react");
-
-// Include the react-router module
-var router = require("react-router");
-
-// Include the Route component for displaying individual routes
-var Route = router.Route;
-
-// Include the Router component to contain all our Routes
-// Here where we can pass in some configuration as props
-var Router = router.Router;
-
-// Include the hashHistory prop to handle routing client side without a server
-// https://github.com/ReactTraining/react-router/blob/master/docs/guides/Histories.md#hashhistory
-var hashHistory = router.hashHistory;
-
-// Include the IndexRoute (catch-all route)
-var IndexRoute = router.IndexRoute;
+import React from 'react';
+import { Route, IndexRoute } from 'react-router';
 
 // Reference the high-level components
-var Main = require("../components/Main.js");
-var Search = require("../components/children/Search");
-var Results = require("../components/children/Results");
-var SavedArticles = require("../components/children/SavedArticles");
+import Main from "../components/Main.js";
+import Search from "../components/children/Search";
+import Results from "../components/children/Results";
+import SavedArticles from "../components/children/SavedArticles";
 
-
-// Export the Routes
-module.exports = (
-
-  // The high level component is the Router component
-  <Router history={hashHistory}>
-    <Route path="/" component={Main}>
-
-      {/* If user selects Search, Results, or SavedArticles show the appropriate component */}
-
-      <Route path="SavedArticles" component={SavedArticles} />
-
-      {/* Default to this option:*/}
-    </Route>
-  </Router>
-
-);
+export default () => {
+	return (
+		<Route path="/" component={Main}>
+			<Route path="/articles" component={SavedArticles} />	
+		</Route>
+	);
+};

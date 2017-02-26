@@ -1,8 +1,8 @@
-var React = require("react");
+import React, {Component} from "react";
 
-var SavedArticleItems = React.createClass({
+class SavedArticleItems extends Component {
 
-  render: function() {
+  render() {
     return (
 		<div className="card-panel row">
 			<span className="col s10 m10">{this.props.title}</span>
@@ -16,7 +16,6 @@ var SavedArticleItems = React.createClass({
 		</div>
     );
   }
+}
 
-});
-
-module.exports = SavedArticleItems;
+export default SavedArticleItems;
