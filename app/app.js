@@ -5,7 +5,4 @@ import routes from "./config/routes";
 
 const appEntry = <Router history={browserHistory}>{routes()}</Router>;
 
-ReactDOM.render(
-	appEntry,
-	document.getElementById("app")
-);
+ReactDOM.render(appEntry, document.getElementById("app"));

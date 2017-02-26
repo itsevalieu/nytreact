@@ -1,8 +1,15 @@
 import React, {Component} from "react";
-import SavedArticleItems from "./SavedArticleItems";
+import ArticleItems from "./ArticleItems";
 
-class SavedArticles extends Component {
-
+class Articles extends Component {
+	
+	constructor(props) {
+		super(props);
+		this.state = {
+			articles: []
+		}
+	}
+  	
   	render() {
 	    return (
 	    	<div className="row">
@@ -11,16 +18,14 @@ class SavedArticles extends Component {
 						<ul className="collection with-header">
 							<li className="collection-header"><h4>Saved Articles</h4></li>
 							<li className="collection-item">
-								
-								{this.props.articles.map((item, index) => {
-									return <SavedArticleItems
+								{this.state.articles.map((item, index) => {
+									return <ArticleItems
 										key={index}
 										title={item.title}
 										date={item.date}
 										url={item.url}
 									/>;
 								})}
-								
 							</li>
 						</ul>
 					</div>
@@ -28,6 +33,7 @@ class SavedArticles extends Component {
 			</div>
 	    );
 	}
+
 }
 
-export default SavedArticles;
+export default Articles;

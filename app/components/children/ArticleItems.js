@@ -1,6 +1,6 @@
 import React, {Component} from "react";
 
-class SavedArticleItems extends Component {
+class ArticleItems extends Component {
 
   render() {
     return (
@@ -18,4 +18,4 @@ class SavedArticleItems extends Component {
   }
 }
 
-export default SavedArticleItems;
+export default ArticleItems;

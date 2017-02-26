@@ -5,12 +5,16 @@ import { Route, IndexRoute } from 'react-router';
 import Main from "../components/Main.js";
 import Search from "../components/children/Search";
 import Results from "../components/children/Results";
-import SavedArticles from "../components/children/SavedArticles";
+import Articles from "../components/children/Articles";
 
 export default () => {
 	return (
 		<Route path="/" component={Main}>
-			<Route path="/articles" component={SavedArticles} />	
+			<IndexRoute component={Search} />
+
+			<Route path="/search" component={Search} />
+				<Route path="/results" component={Results} />
+			<Route path="/articles" component={Articles} />	
 		</Route>
 	);
 };

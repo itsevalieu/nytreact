@@ -1,4 +1,6 @@
 import React, {Component} from "react";
+import Results from "./Results";
+import helpers from "../helpers";
 
 class Search extends Component {
 
@@ -9,9 +11,11 @@ class Search extends Component {
 		this.state = { 
 			term: "",
 			startYear: "",
-			endYear: ""
+			endYear: "",
+			results: []
 		}
 	}
+
 	handleChange(event) {
 		if(event.target.id === "term") {
 			this.setState({
@@ -27,19 +31,23 @@ class Search extends Component {
 			});
 		}
 	}
+
 	handleSubmit(event) {
 		event.preventDefault();
-		this.props.setTerms(this.state.term, this.state.startYear, this.state.endYear);
 
 		console.log("Search: handling form submit", this.state.term, this.state.startYear, this.state.endYear);
-
-		this.setState({
-			term: "",
-			startYear: "",
-			endYear: ""
+		
+		helpers.runQuery(this.state.term, this.state.startYear, this.state.endYear).then((response) => {
+			console.log("Search: Results are in!", response);
+			this.setState({
+				term: "",
+				startYear: "",
+				endYear: "",
+				results: response
+			});
 		});
-
 	}
+
 	render() {
 	    return (
 	    	<div className="row">
@@ -90,11 +98,14 @@ class Search extends Component {
 
 						</ul>
 					</div>
+					<div>
+						<Results results={this.state.results}></Results>
+					</div>
 				</div>
 			</div>
 	    );
-  
 	}
+	
 }
 
 export default Search;

@@ -23,6 +23,7 @@ class Results extends Component {
 			</div>
 	    );
 	}
+
 }
 
 export default Results;

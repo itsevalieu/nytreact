@@ -47,7 +47,14 @@ var helper = {
       title: title, 
       url: url 
     });
+  },
+
+  deleteArticle: function(id) {
+    return axios.delete("/api/saved", {
+      _id: id
+    });
   }
+
 };
 
 // We export the API helper

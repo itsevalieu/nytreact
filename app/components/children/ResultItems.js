@@ -2,21 +2,21 @@ import React, {Component} from "react";
 
 
 class ResultItems extends Component {
+	
 	constructor(props) {
 		super(props);
 		this.state = { 
-			saved: false,
-			starId: "grey"||"blue"
+			saved: false
 		}
 	}
 	
 	saveItem() {
 		console.log("Item saved?:", this.state.saved);
 		this.setState({
-			saved: !this.state.saved,
-			starId: !this.state.starId
+			saved: !this.state.saved
 		});
 	}
+	
 	render() {
 	    return (
 			<li className="collection-item" >
@@ -28,12 +28,13 @@ class ResultItems extends Component {
 						id={this.props.title} 
 						onClick={this.saveItem}
 						className="secondary-content">
-						<i className="material-icons star" id={this.state.starId}>star</i>
+						<i className="material-icons star">star</i>
 					</a>
 				</div>
 			</li>
 	    );
 	}
+
 }
 
 export default ResultItems;
