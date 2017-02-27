@@ -15,6 +15,7 @@ class Results extends Component {
 									key={index}
 									title={item.title}
 									url={item.url}
+									handleSave={this.props.handleSave(item)}
 								/>;
 							})}							
 						</ul>

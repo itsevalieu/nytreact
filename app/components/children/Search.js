@@ -8,6 +8,7 @@ class Search extends Component {
 		super(props);
 		this.handleChange = this.handleChange.bind(this);
 		this.handleSubmit = this.handleSubmit.bind(this);
+		this.handleSave = this.handleSave.bind(this);
 		this.state = { 
 			term: "",
 			startYear: "",
@@ -15,7 +16,7 @@ class Search extends Component {
 			results: []
 		}
 	}
-
+	//Function: Handles live changes for input
 	handleChange(event) {
 		if(event.target.id === "term") {
 			this.setState({
@@ -31,7 +32,7 @@ class Search extends Component {
 			});
 		}
 	}
-
+	//Function: Handles queries on form submit
 	handleSubmit(event) {
 		event.preventDefault();
 		console.log("Search: handling form submit", this.state.term, this.state.startYear, this.state.endYear);
@@ -43,6 +44,12 @@ class Search extends Component {
 				endYear: "",
 				results: response
 			});
+		});
+	}
+	//Function: Handles article saves on click
+	handleSave(saveArticle) {
+		helpers.postArticle(saveArticle).then(() => {
+			console.log("Search.handleSave: Save completed");
 		});
 	}
 
@@ -97,7 +104,7 @@ class Search extends Component {
 						</ul>
 					</div>
 					<div>
-						<Results results={this.state.results}></Results>
+						<Results handleSave = {this.handleSave}results={this.state.results}></Results>
 					</div>
 				</div>
 			</div>

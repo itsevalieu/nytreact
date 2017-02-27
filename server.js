@@ -79,21 +79,18 @@ app.post("/api/saved", function(req, res) {
   });
 });
 
-app.delete("/api/saved", function(req, res) {
-  console.log("BODY: " + req.body._id);
+app.delete("/api/delete/:id", function(req, res) {
+  console.log("Deleting: " + req.body, req.params.id);
 
   // Here we'll save the location based on the JSON input.
   // We'll use Date.now() to always get the current date time
-  Article.remove({
-    _id: req.body._id
-  }, function(err) {
-    if (err) {
-      console.log(err);
-    }
-    else {
-      res.send("Delete article.");
-    }
+  var deleted = Article.findByIdAndRemove(req.params.id).exec();
+  deleted.then(function(data) {
+    console.log("Deleted:", data._id);
+  });.catch(function(err) {
+    console.log("Error deleting doc:", err);
   });
+
 });
 
 // -------------------------------------------------

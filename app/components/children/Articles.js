@@ -7,8 +7,10 @@ class Articles extends Component {
 	constructor(props) {
 		super(props);
 		this.getSavedArticles = this.getSavedArticles.bind(this);
+		this.setTerm = this.setTerm.bind(this);
 		this.state = {
-			articles: []
+			articles: [],
+			idToDelete: ""
 		}
 	}
 
@@ -24,6 +26,26 @@ class Articles extends Component {
 			this.setState({ articles: response.data });
 		});
   	}
+  	//Function: Set variables for delete
+  	setTerm(id) {
+  		console.log(id);
+		this.setState({
+			idToDelete: id,			
+		});
+		console.log(this.state.idToDelete);
+	}
+  	//Handle Deletion of Article
+  	// deleteItem(event) {
+  	// 	event.preventDefault();
+  	// 	console.log("Id to delete: ", this.state.idToDelete);
+  	// 	helpers.deleteArticle(this.state.idToDelete).then((response) => {
+  	// 		console.log("Deleting: ", response.data);
+  	// 		this.setState({ articles: response.data });
+  	// 	});
+  	// }
+  	//deleteItem={this.deleteItem}
+  	//						onClick={this.props.deleteItem} 
+
   	//Render Article Component and child ArticleItem components
   	render() {
 	    return (
@@ -36,9 +58,11 @@ class Articles extends Component {
 								{this.state.articles.map((item, index) => {
 									return <ArticleItems
 										key={index}
+										id={item._id}
+										setTerm={this.setTerm}
+										
 										title={item.title}
 										date={item.date}
-										url={item.url}
 									/>;
 								})}
 							</li>

@@ -42,17 +42,15 @@ var helper = {
   },
 
   // This function posts new searches to our database.
-  postArticle: function(title, url) {
+  postArticle: function(saveArticle) {
     return axios.post("/api/saved", { 
-      title: title, 
-      url: url 
+      title: saveArticle.title, 
+      url: saveArticle.url 
     });
   },
 
   deleteArticle: function(id) {
-    return axios.delete("/api/saved", {
-      _id: id
-    });
+    return axios.delete("/api/delete/" + id);
   }
 
 };
