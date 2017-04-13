@@ -13,7 +13,7 @@ var helper = {
     console.log("Helper: get", topic, beginDate, endDate);
 
     // Figure out the geolocation
-    var queryURL = "http://api.nytimes.com/svc/search/v2/articlesearch.json?q=" + topic + "&page=1&begin_date=" + beginDate + "0101&end_date=" + endDate + "0101&sort=newest&api-key=" + nytAPI;
+    var queryURL = "https://api.nytimes.com/svc/search/v2/articlesearch.json?q=" + topic + "&page=1&begin_date=" + beginDate + "0101&end_date=" + endDate + "0101&sort=newest&api-key=" + nytAPI;
     return axios.get(queryURL).then(function(results) {
       // If get get a result, return that result's formatted address property
       	var queryResults = results.data.response.docs;
