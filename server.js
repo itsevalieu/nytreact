@@ -3,6 +3,7 @@ var express = require("express");
 var bodyParser = require("body-parser");
 var logger = require("morgan");
 var mongoose = require("mongoose");
+var path = require("path");
 
 // Require Article Schema
 var Article = require("./models/Article");
@@ -10,7 +11,7 @@ var Article = require("./models/Article");
 // Create Instance of Express
 var app = express();
 // Sets an initial port. We'll use this later in our listener
-var PORT = process.env.PORT || 10000;
+var PORT = process.env.PORT || 3000;
 
 // Run Morgan for Logging
 app.use(logger("dev"));
@@ -24,7 +25,9 @@ app.use(express.static("./public"));
 // -------------------------------------------------
 
 // MongoDB Configuration configuration (Change this URL to your own DB)
-mongoose.connect("mongodb://localhost/nytreact");
+mongoose.Promise = global.Promise;
+var mongoURL = process.env.MONGODB_URI || "mongodb://localhost/nytreact";
+mongoose.connect(mongoURL);
 var db = mongoose.connection;
 
 db.on("error", function(err) {
@@ -87,7 +90,7 @@ app.delete("/api/delete/:id", function(req, res) {
   var deleted = Article.findByIdAndRemove(req.params.id).exec();
   deleted.then(function(data) {
     console.log("Deleted:", data._id);
-  });.catch(function(err) {
+  }).catch(function(err) {
     console.log("Error deleting doc:", err);
   });
 
